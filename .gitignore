@@ -2,3 +2,5 @@
 /.gradle/
 /build/
 /build/classes/java/test/
+/.idea
+src/test/resources/ScrenShot
