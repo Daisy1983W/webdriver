@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="test1" verbose="1">
+    <test name="ChromeTest" preserve-order="true" enabled="true">
+        <parameter name="priority"  value="1" />
+        <parameter name="enabled"  value="true" />
+        <classes>
+            <class name="ChromeTest" />
+        </classes>
+    </test>
+    <test name="Rejstracjaczytam" preserve-order="true" enabled="true">
+    <classes>
+        <class name="RegistrationTest"></class>
+    </classes>
+    </test>
+    <test name="ListaKsiązek" preserve-order="true" enabled="true">
+        <classes>
+            <class name="ListBooks"></class>
+        </classes>
+    </test>
+</suite>
