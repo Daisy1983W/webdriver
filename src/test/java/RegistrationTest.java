@@ -32,6 +32,7 @@ public class RegistrationTest {
             WebDriverWait wait = new WebDriverWait(driver, 30);
             File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             try {
+                //Scieżka do poprawy, zmienić na relatywną, najlepiej w głównym katalogu projektu
                 FileUtils.copyFile(src, new File("C:/Users/Monika/IdeaProjects/webdriver/src/test/resources/ScrenShot/" + src.getName()));
             } catch (IOException e) {
                 e.printStackTrace();
