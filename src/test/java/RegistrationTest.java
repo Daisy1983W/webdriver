@@ -21,7 +21,7 @@ public class RegistrationTest {
             System.setProperty("webdriver.chrome.driver", "src/test/java/data/chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
-
+        // poprawić formatowanie
 
         }
 
@@ -29,9 +29,11 @@ public class RegistrationTest {
 
         public void afterClass()
         {
+            //po co to tutaj jest?
             WebDriverWait wait = new WebDriverWait(driver, 30);
             File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             try {
+                //zmienić ścieżkę na relatywną, najlepiej do katalogu głównego projektu
                 FileUtils.copyFile(src, new File("C:/Users/Monika/IdeaProjects/webdriver/src/test/resources/ScrenShot/" + src.getName()));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -66,6 +68,9 @@ public class RegistrationTest {
             WebElement Element = driver.findElement(By.className("submit-next"));
             js.executeScript("arguments[0].scrollIntoView();", Element);
             driver.findElement(By.className("submit-next")).click();
+            //zmienić kodowanie w projekcie (UTF-8)
+            //polskie znaki u mnie nie działają a zamiast tego mam krzaki
+            //proszę spróbować zmienić też kodowanie bezpośrednio w IntelliJ
             Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"main\"]/div/div")).getText(), "Dziękujemy. Potwierdzenie rejestracji zostało wysłane na podany adres e-mail.\n×");
 
 
