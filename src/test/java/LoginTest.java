@@ -3,8 +3,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
@@ -24,15 +22,14 @@ public class LoginTest extends BaseTest {
 
     @Test(dataProvider = "provideLoginData")
     public void shouldLoginUser(String login, String password, String expectedText) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.get("https://czytam.pl/");
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("Logowanie")))).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email"))).sendKeys(login);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("haslo"))).sendKeys(password);
+        driver.findElement(By.linkText("Logowanie")).click();
+        driver.findElement(By.name("email")).sendKeys(login);
+        driver.findElement(By.name("haslo")).sendKeys(password);
 
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//input[@value = 'Zaloguj']")))).submit();
+        driver.findElement(By.xpath("//input[@value = 'Zaloguj']")).submit();
 
-        String headerAccountText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header-account\"]/a[3]"))).getText();
+        String headerAccountText = driver.findElement(By.xpath("//*[@id=\"header-account\"]/a[3]")).getText();
         Assert.assertEquals(headerAccountText, expectedText);
     }
 
