@@ -16,14 +16,14 @@ public class BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/data/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "./src/test/java/data/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(src, new File("src/test/resources/screenshots/" + src.getName()));
         } catch (IOException e) {
