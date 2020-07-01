@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
@@ -18,6 +19,7 @@ public class BaseTest {
     public void beforeClass() {
         System.setProperty("webdriver.chrome.driver", "./src/test/java/data/chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
