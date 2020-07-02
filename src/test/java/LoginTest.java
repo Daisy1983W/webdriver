@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
         String fileName = "login_data.xls";
         String sheetName = "Arkusz1";
 
-        File file = new File(getClass().getClassLoader().getResource(fileName).getFile());
+        File file = new File(getClass().getResource(fileName).getFile());
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(file);
